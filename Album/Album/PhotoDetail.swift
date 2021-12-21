@@ -10,7 +10,19 @@ import SwiftUI
 struct PhotoDetail: View {
     var img: UIImage
     var body: some View {
-       Image(uiImage: img)
+            Spacer()
+            Image(uiImage: img)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+//                .clipShape(Circle())
+//                .overlay(Circle().stroke(Color.white, lineWidth: 8))
+                .shadow(radius: 4)
+                .frame(width: 400,height:400)
+                .clipped()
+
+            
+        Spacer()
+        
     }
 }
 

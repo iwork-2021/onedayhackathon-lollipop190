@@ -22,20 +22,21 @@ struct PhotoView: View {
 //                }
 //
 //            }
-            AllPhoto(allImgs: allImgs)
+            AllPhoto(isShowDetail: Array.init(repeating: false, count: allImgs.count),allImgs: allImgs)
             .tabItem {
-                Image(systemName: "rectangle.fill")
-                Text("所有照片")
+                Image(systemName: "photo")
+                Text("图片")
             }
             
             
             NavigationView{
                 List(Array(labelAndImgPair.keys), id: \.self){ label in
-                    NavigationLink(label, destination: AllPhoto(allImgs: labelAndImgPair[label]!))
+                    NavigationLink(label, destination: AllPhoto(isShowDetail: Array.init(repeating: false, count: labelAndImgPair[label]!.count),allImgs: labelAndImgPair[label]!))
                     
-                }
+                }.navigationTitle("分类")
+                    .listStyle(InsetListStyle())
             }.tabItem {
-                Image(systemName: "rectangle.fill")
+                Image(systemName: "table")
                 Text("分类")
             }
         }
